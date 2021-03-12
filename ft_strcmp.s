@@ -9,16 +9,22 @@ _ft_strcmp:
 
 .loop:
 	cmp		byte [rdi + rcx], 0
-	je		.exit
+	je		.dif
 	cmp		byte [rsi + rcx], 0
-	je		.exit
+	je		.dif
 	mov		r8b, byte [rdi + rcx]
 	mov		r9b, byte [rsi + rcx]
 	sub		r8b, r9b
 	cmp		r8b, 0
-	jne		.exit
+	jne		.return
+	inc		rcx
 	jmp		.loop
 
-.exit:
+.dif:
+	mov		r8b, byte [rdi + rcx]
+	mov		r9b, byte [rsi + rcx]
+	sub		r8b, r9b
+
+.return:
 	mov		al, r8b
 	ret
