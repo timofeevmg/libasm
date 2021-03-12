@@ -8,6 +8,8 @@ _ft_strcpy:
 	je		.exit
 	cmp		rdi, 0
 	je		.exit
+	cmp		rsi, rdi
+	je		.exit
 
 .loop:
 	cmp		byte [rsi + rcx], 0
