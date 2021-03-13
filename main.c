@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maksimtimofeev <maksimtimofeev@student.    +#+  +:+       +#+        */
+/*   By: epilar <epilar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 09:36:42 by epilar            #+#    #+#             */
-/*   Updated: 2021/03/12 21:09:01 by maksimtimof      ###   ########.fr       */
+/*   Updated: 2021/03/13 14:56:58 by epilar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int		ft_strlen(char *s);
 char	*ft_strcpy(char *dst, const char *src);
-int		ft_strcmp(const char *s1, const char *s2);
+int		ft_strcmp(const char *str1, const char *str2);
 
 
 int		main(void)
@@ -70,6 +71,7 @@ int		main(void)
 	printf("dif: %d | must be 52\n", ft_strcmp(str1, str2));
 	printf("dif: %d | must be 0\n", ft_strcmp(str3, str4));
 	printf("dif: %d | must be -113\n", ft_strcmp(str5, str6));
+	printf("dif_orig: %d | must be -113\n", strcmp(str5, str6));
 
 	return (0);
 }

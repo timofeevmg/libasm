@@ -5,26 +5,18 @@ _ft_strcmp:
 	xor		rax, rax
 	xor		rcx, rcx
 	xor		r8, r8
-	xor		r9, r9
 
 .loop:
-	cmp		byte [rdi + rcx], 0
-	je		.dif
-	cmp		byte [rsi + rcx], 0
-	je		.dif
-	mov		r8b, byte [rdi + rcx]
-	mov		r9b, byte [rsi + rcx]
-	sub		r8b, r9b
-	cmp		r8b, 0
-	jne		.return
+	mov		al, byte [rdi + rcx]
+	mov		r8b, byte [rsi + rcx]
 	inc		rcx
-	jmp		.loop
+	cmp		rax, 0
+	je		.ret
+	cmp		r8, 0
+	je		.ret
+	cmp		rax, r8
+	je		.loop
 
-.dif:
-	mov		r8b, byte [rdi + rcx]
-	mov		r9b, byte [rsi + rcx]
-	sub		r8b, r9b
-
-.return:
-	mov		al, r8b
+.ret:
+	sub		rax, r8
 	ret
