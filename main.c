@@ -6,18 +6,20 @@
 /*   By: epilar <epilar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 09:36:42 by epilar            #+#    #+#             */
-/*   Updated: 2021/03/13 14:56:58 by epilar           ###   ########.fr       */
+/*   Updated: 2021/03/13 18:23:00 by epilar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+#include <errno.h>
 
 int		ft_strlen(char *s);
 char	*ft_strcpy(char *dst, const char *src);
 int		ft_strcmp(const char *str1, const char *str2);
-
+int		ft_write(int fd, const void *buf, size_t n);
 
 int		main(void)
 {
@@ -41,6 +43,11 @@ int		main(void)
 	char	*str4;
 	char	*str5;
 	char	*str6;
+
+//write
+	char	*string;
+	int		ret_my;
+	int		ret_orig;
 
 //strlen
 	s1 = "hello";
@@ -72,6 +79,14 @@ int		main(void)
 	printf("dif: %d | must be 0\n", ft_strcmp(str3, str4));
 	printf("dif: %d | must be -113\n", ft_strcmp(str5, str6));
 	printf("dif_orig: %d | must be -113\n", strcmp(str5, str6));
+
+//write
+	string = "hello\n";
+	ret_my = ft_write(1, string, 6);
+	printf("error: %d\n", errno);
+	printf("ret_my= %d | must be -1\n", ret_my);
+	// ret_orig = write(5000, string, 6);
+	// printf("ret_orig= %d | must be 6\n", ret_orig);
 
 	return (0);
 }
