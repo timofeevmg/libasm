@@ -6,7 +6,7 @@
 /*   By: epilar <epilar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 09:36:42 by epilar            #+#    #+#             */
-/*   Updated: 2021/03/14 17:11:10 by epilar           ###   ########.fr       */
+/*   Updated: 2021/03/14 17:21:14 by epilar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,6 @@ int		main(void)
 	s = "hello";
 	d = ft_strdup(s);
 	printf("\n-strdup------------\n");
-	printf("%s\n", d);
+	printf("%s | must be hello\n", d);
 	return (0);
 }

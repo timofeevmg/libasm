@@ -5,12 +5,13 @@ section .text
 _ft_strdup:
 	xor		rax, rax
 	xor		rcx, rcx
+	xor		r8, r8
 
-.len_loop:
+.lenth:
 	cmp		byte [rdi + rcx], 0
 	je		.malloc
 	inc		rcx
-	jmp		.len_loop
+	jmp		.lenth
 
 .malloc:
 	push	rdi
@@ -18,11 +19,16 @@ _ft_strdup:
 	mov		rdi, rcx
 	call	_malloc
 	pop		rdi
+	xor		rcx, rcx
 
-.copy_loop:
+.copy:
+	cmp		byte [rdi + rcx], 0
+	je		.ret
 	mov		r8b, byte [rdi + rcx]
 	mov		byte [rax + rcx], r8b
-	dec		rcx
-	cmp		rcx, 0
-	jge		.copy_loop
+	inc		rcx
+	jmp		.copy
+
+.ret:
+	mov		byte [rax + rcx], 0
 	ret
