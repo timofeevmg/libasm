@@ -9,9 +9,8 @@ _ft_write:
 	ret
 
 .err:
-	neg		rax
-	mov		rdx, rax
+	mov		r8, rax
 	call ___error
-	mov		[rax], rdx
+	mov		[rax], r8
 	mov		rax, -1
 	ret
