@@ -1,5 +1,6 @@
 global _ft_strdup
 extern _malloc
+extern ___error
 
 section .text
 _ft_strdup:
@@ -18,6 +19,7 @@ _ft_strdup:
 	inc		rcx
 	mov		rdi, rcx
 	call	_malloc
+	jc		.err
 	pop		rdi
 	xor		rcx, rcx
 
@@ -31,4 +33,11 @@ _ft_strdup:
 
 .ret:
 	mov		byte [rax + rcx], 0
+	ret
+
+.err:
+	mov		r8, rax
+	call ___error
+	mov		[rax], r8
+	mov		rax, 0
 	ret
